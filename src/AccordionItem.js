@@ -2,9 +2,9 @@ import React from 'react';
 
 const AccordionItem = (props) => {
     return (
-      <li className={props.active ? 'is-active' : ''}>        
+      <li className={props.className}>        
           <h2 onClick={props.onActiveSelect}>{props.data.title}</h2>
-          <div aria-hidden={props.active ? false : true}>
+          <div aria-hidden={props.ariaHidden}>
             {props.data.content}
           </div>
       </li>

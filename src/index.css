@@ -16,15 +16,15 @@ ul {
 	border: 1px solid rgba(0,0,0,.15);
 }
 
-
 li {
-	cursor: pointer;
+	
 	list-style: none;
 }
 
 li h2{
-	border-bottom: 1px solid rgba(0,0,0,.15);
 	padding: 1rem;
+	cursor: pointer;
+	border-bottom: 1px solid rgba(0,0,0,.15);
 }
 
 li.is-active h2{

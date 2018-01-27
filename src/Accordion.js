@@ -23,13 +23,17 @@ class Accordion extends Component {
     this.setState({active: itemIndex})
   }
 
-  render() {
+  render() {         
     const accordionItems = this.state.data.map((item,index) => {
+
+      const isActive = this.state.active === index;
+
       return (
-        <AccordionItem      
-         key={item.title}
+        <AccordionItem
+         ariaHidden={isActive ? false : true}
+         className={isActive ? 'is-active' : ''}
          data={item}
-         active={this.state.active === index}
+         key={item.title}
          onActiveSelect={(e,item) => this.activeSelect(e,index)} />
         );
     });
