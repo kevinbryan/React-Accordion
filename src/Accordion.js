@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
 import AccordionItem from './AccordionItem';
-import listContent from './data.js';
+import data from './data.js';
 
 class Accordion extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      activeTab: false,
-      data: listContent
+      active: null,
+      data
     };
 
   }
 
-  handleClick(e,activeTab){
-    this.state.activeTab === activeTab ? this.setState({activeTab: !activeTab}) : this.setState({activeTab})
+  // This function takes in the item Index (when used within the map function within the render method).
+  // It then compares the current active state against the items index to see if it is already active.
+  // If it is set the active state back to null, if not then set the active state to the current item index.
+
+  activeSelect(e,itemIndex) {
+    this.state.active === itemIndex ? 
+    this.setState({active: null}) : 
+    this.setState({active: itemIndex})
   }
 
   render() {
     const accordionItems = this.state.data.map((item,index) => {
       return (
-        <AccordionItem         
+        <AccordionItem      
          key={item.title}
          data={item}
-         activeTab={this.state.activeTab === index}
-         onClicked={(e,item) => this.handleClick(e,index)} />
+         active={this.state.active === index}
+         onActiveSelect={(e,item) => this.activeSelect(e,index)} />
         );
     });
 
@@ -33,7 +39,9 @@ class Accordion extends Component {
         {accordionItems}
       </ul>
     );
+
   }
+
 }
 
 export default Accordion;
